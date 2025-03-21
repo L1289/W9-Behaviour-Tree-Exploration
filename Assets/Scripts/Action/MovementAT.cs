@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using UnityEngine;
 
 
 namespace NodeCanvas.Tasks.Actions {
@@ -16,13 +17,33 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
+			
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
-		}
+		
+		//Player Moving Foward
+		if (Input.GetKey(KeyCode.W))
+			{
+                agent.transform.position += Vector3.forward * Time.deltaTime;
+            }
+		//Player Moving Down
+		else if (Input.GetKey(KeyCode.S))
+			{
+                agent.transform.position += Vector3.back * Time.deltaTime;
+            }
+        //Player Moving Left
+        else if (Input.GetKey(KeyCode.A))
+            {
+                agent.transform.position += Vector3.left * Time.deltaTime;
+            }
+        //Player Moving Right
+        else if (Input.GetKey(KeyCode.D))
+            {
+                agent.transform.position += Vector3.right * Time.deltaTime;
+            }
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
