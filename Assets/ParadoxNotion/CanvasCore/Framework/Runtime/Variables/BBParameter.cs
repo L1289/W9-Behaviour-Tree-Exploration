@@ -435,5 +435,9 @@ namespace NodeCanvas.Framework
             return new BBParameter<T> { value = value };
         }
 
+        public static implicit operator BBParameter<T>(BBParameter<bool> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
